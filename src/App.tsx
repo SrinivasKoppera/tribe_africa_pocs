@@ -1,15 +1,15 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import CarouselComponent from "./components/carousel-one/carousel-screen";
-import CharmingHotelsCarouselComponent from "./components/carousel-two/carousel-screen";
-import BusinessCarousel from "./components/carousel-three/carousel-screen";
+import CarouselContainer from "./components/carousel-one/carousel-container";
+import CharmingHotelsCarouselContainer from "./components/carousel-two/carousel-container";
+import BusinessCarouselContainer from "./components/carousel-three/carousel-container";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<CarouselComponent />} />
-        <Route path="/hotels" element={<CharmingHotelsCarouselComponent />} />
-        <Route path="/business" element={<BusinessCarousel />} />
+        <Route path="/" element={<CarouselContainer />} />
+        <Route path="/hotels" element={<CharmingHotelsCarouselContainer />} />
+        <Route path="/business" element={<BusinessCarouselContainer />} />
       </Routes>
     </BrowserRouter>
   );

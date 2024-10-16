@@ -1,41 +1,24 @@
-import React, { useState } from "react";
+// CharmingHotelsCarouselScreen.tsx
+import React from "react";
 import { Link } from "react-router-dom";
 
-interface CarouselProps {
+interface CarouselScreenProps {
   images: string[];
+  currentIndex: number;
+  handleNext: () => void;
+  handlePrev: () => void;
+  isNextDisabled: boolean;
+  isPrevDisabled: boolean;
 }
 
-const CharmingHotelsCarouselComponent: React.FC<CarouselProps> = ({
-  images = [
-    "https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg",
-    "https://photographylife.com/wp-content/uploads/2018/11/Moeraki-Boulders-New-Zealand.jpg",
-    "https://cdn.fstoppers.com/styles/full/s3/media/2019/12/04/nando-jpeg-quality-001.jpg",
-    "https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg",
-    "https://photographylife.com/wp-content/uploads/2018/11/Moeraki-Boulders-New-Zealand.jpg",
-    "https://cdn.fstoppers.com/styles/full/s3/media/2019/12/04/nando-jpeg-quality-001.jpg",
-    "https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg",
-    "https://photographylife.com/wp-content/uploads/2018/11/Moeraki-Boulders-New-Zealand.jpg",
-    "https://cdn.fstoppers.com/styles/full/s3/media/2019/12/04/nando-jpeg-quality-001.jpg",
-  ],
+const CharmingHotelsCarouselScreen: React.FC<CarouselScreenProps> = ({
+  images,
+  currentIndex,
+  handleNext,
+  handlePrev,
+  isNextDisabled,
+  isPrevDisabled,
 }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const itemsPerPage = 3;
-
-  const handleNext = () => {
-    if (currentIndex + itemsPerPage < images.length) {
-      setCurrentIndex(currentIndex + itemsPerPage);
-    }
-  };
-
-  const handlePrev = () => {
-    if (currentIndex - itemsPerPage >= 0) {
-      setCurrentIndex(currentIndex - itemsPerPage);
-    }
-  };
-
-  const isNextDisabled = currentIndex + itemsPerPage >= images.length;
-  const isPrevDisabled = currentIndex === 0;
-
   return (
     <div className="bg-gray-200">
       <div className="grid grid-cols-12 gap-4 items-center mx-14 mb-2">
@@ -69,7 +52,7 @@ const CharmingHotelsCarouselComponent: React.FC<CarouselProps> = ({
           <div
             className="flex transition-transform duration-500 ease-in-out"
             style={{
-              transform: `translateX(-${currentIndex * (100 / itemsPerPage)}%)`,
+              transform: `translateX(-${currentIndex * (100 / 3)}%)`,
             }}
           >
             {images.map((image, index) => (
@@ -105,4 +88,4 @@ const CharmingHotelsCarouselComponent: React.FC<CarouselProps> = ({
   );
 };
 
-export default CharmingHotelsCarouselComponent;
+export default CharmingHotelsCarouselScreen;
