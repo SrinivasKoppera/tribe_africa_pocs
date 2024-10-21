@@ -41,6 +41,16 @@ const CarouselContainer: React.FC = () => {
     setActiveIndex(index);
   };
 
+  const handleRightClick = () => {
+    setActiveIndex((prevIndex) => (prevIndex + 1) % images.length);
+  };
+
+  const handleLeftClick = () => {
+    setActiveIndex(
+      (prevIndex) => (prevIndex - 1 + images.length) % images.length
+    );
+  };
+
   return (
     <CarouselScreen
       images={images}
@@ -50,6 +60,8 @@ const CarouselContainer: React.FC = () => {
       setIsHovered={setIsHovered}
       getClassNames={getClassNames}
       handleDotClick={handleDotClick}
+      handleRightClick={handleRightClick}
+      handleLeftClick={handleLeftClick}
     />
   );
 };

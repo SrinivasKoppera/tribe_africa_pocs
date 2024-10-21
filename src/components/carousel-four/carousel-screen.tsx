@@ -1,4 +1,3 @@
-// BusinessCarouselScreen.tsx
 import React from "react";
 
 interface CarouselItem {
@@ -15,16 +14,16 @@ interface BusinessCarouselScreenProps {
   handlePrev: () => void;
 }
 
-const BusinessCarouselScreen: React.FC<BusinessCarouselScreenProps> = ({
+const BusinessFriendlyCarouselScreen: React.FC<BusinessCarouselScreenProps> = ({
   carouselData,
   currentIndex,
   handleNext,
   handlePrev,
 }) => {
   return (
-    <div className="container w-full max-w-6xl mx-auto px-8 py-8 bg-gray-200">
+    <div className="container w-full max-w-6xl mx-auto px-8 py-8">
       <h1 className="text-2xl md:text-4xl font-bold mb-8">
-        Great For <span className="text-orange-600">Working Remotely</span>
+        <span className="text-orange-600">Business </span>Friendly
       </h1>
       <div className="relative flex sm:flex-col items-center">
         {/* Left Arrow */}
@@ -40,10 +39,10 @@ const BusinessCarouselScreen: React.FC<BusinessCarouselScreenProps> = ({
         </button>
 
         {/* Text and Image */}
-        <div className="w-full flex flex-col md:flex-row relative items-center">
+        <div className="w-full flex flex-col md:flex-row-reverse relative items-center">
           {/* Text container */}
-          <div className="w-full mb-3 relative z-10 bg-white rounded-lg shadow-lg w-full md:max-w-md">
-            <div className="bg-white p-8 pl-10 rounded-lg shadow-lg w-full md:max-w-[53rem] md:w-[130%]">
+          <div className="w-full md:-ml-10 mb-3 md:mb-0 z-10 relative bg-white rounded-lg shadow-lg">
+            <div className="bg-white p-8 md:-ml-10 rounded-lg w-full md:max-w-[53rem]">
               <h2 className="text-xl font-semibold mb-2">
                 {carouselData[currentIndex].title}
               </h2>
@@ -54,7 +53,7 @@ const BusinessCarouselScreen: React.FC<BusinessCarouselScreenProps> = ({
           </div>
 
           {/* Image container */}
-          <div className="w-full relative md:ml-12 overflow-hidden rounded-lg shadow-lg">
+          <div className="w-full relative overflow-hidden rounded-lg shadow-lg">
             <img
               src={carouselData[currentIndex].image}
               alt={carouselData[currentIndex].title}
@@ -65,7 +64,7 @@ const BusinessCarouselScreen: React.FC<BusinessCarouselScreenProps> = ({
 
         {/* Right Arrow */}
         <button
-          className={`absolute -right-7 top-2/3 md:top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full w-12 h-12 md:w-16 md:h-16 shadow-lg border-slate-300 ${
+          className={`absolute z-30 -right-7 top-2/3 md:top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full w-12 h-12 md:w-16 md:h-16 shadow-lg border-slate-300 ${
             currentIndex === carouselData.length - 1
               ? "opacity-50 cursor-not-allowed"
               : ""
@@ -81,4 +80,4 @@ const BusinessCarouselScreen: React.FC<BusinessCarouselScreenProps> = ({
   );
 };
 
-export default BusinessCarouselScreen;
+export default BusinessFriendlyCarouselScreen;

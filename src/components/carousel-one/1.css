@@ -2,7 +2,7 @@
   position: relative;
   width: 50%;
   height: 20rem;
-  margin: 80px auto;
+  margin: 20px auto;
   perspective: 1400px;
   display: flex;
   justify-content: center;
@@ -32,12 +32,20 @@
 .slider-item h1 {
   position: absolute;
   bottom: 20px;
-  left: 10%;
+  left: 8%;
   transform: translateX(-50%);
   color: white;
-  font-size: 2rem;
+  font-size: 1.5rem;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
   z-index: 2;
+}
+
+@media screen and (max-width: 767px) {
+  .slider-item h1 {
+    bottom: 10px;
+    left: 15%;
+    font-size: 1.3rem;
+  }
 }
 
 /* Transparent effect on hover */
@@ -100,17 +108,23 @@
 .indicators {
   display: flex;
   justify-content: center;
-  margin-top: 60%; /* Space between images and indicators */
+  align-items: center;
 }
 
 .indicator {
-  width: 12px; /* Size of the dot */
-  height: 12px;
+  width: 10px; /* Size of the dot */
+  height: 10px;
   border-radius: 50%;
   background: lightgray; /* Default color */
   margin: 0 5px; /* Spacing between dots */
   cursor: pointer; /* Change cursor on hover */
   transition: background 300ms ease; /* Smooth transition for color change */
+}
+@media screen and (max-width: 768px) {
+  .indicator {
+    width: 8px;
+    height: 8px;
+  }
 }
 
 .indicator.active {

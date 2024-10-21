@@ -16,21 +16,31 @@ const images = [
 
 const CharmingHotelsCarouselContainer: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const itemsPerPage = 3;
+  let itemsPerPage = 0;
+
+  const screenWidth = window.innerWidth;
+
+  if (screenWidth < 768) {
+    itemsPerPage = 1;
+  } else if (screenWidth < 1024) {
+    itemsPerPage = 2;
+  } else {
+    itemsPerPage = 3;
+  }
 
   const handleNext = () => {
     if (currentIndex + itemsPerPage < images.length) {
-      setCurrentIndex(currentIndex + itemsPerPage);
+      setCurrentIndex(currentIndex + 1);
     }
   };
 
   const handlePrev = () => {
     if (currentIndex - itemsPerPage >= 0) {
-      setCurrentIndex(currentIndex - itemsPerPage);
+      setCurrentIndex(currentIndex - 1);
     }
   };
 
-  const isNextDisabled = currentIndex + itemsPerPage >= images.length;
+  const isNextDisabled = currentIndex >= images.length - itemsPerPage;
   const isPrevDisabled = currentIndex === 0;
 
   return (
@@ -41,6 +51,7 @@ const CharmingHotelsCarouselContainer: React.FC = () => {
       handlePrev={handlePrev}
       isNextDisabled={isNextDisabled}
       isPrevDisabled={isPrevDisabled}
+      itemsPerPage={itemsPerPage}
     />
   );
 };
